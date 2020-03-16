@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import ThoughtList from './ThoughtList/ThoughtList';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main>
+      <header className='banner'>
+        <h1>ThoughtBin</h1>
+        <p>A place for your thoughts.</p>
       </header>
-    </div>
+      <section>
+        <h3>What's on your mind?</h3>
+        <div>
+          <button>Make a thought</button>
+          <button>Make a thought</button>
+        </div>
+      </section>
+    </main>
   );
 }
 
