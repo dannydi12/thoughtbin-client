@@ -1,11 +1,9 @@
 import React from 'react';
 import ThoughtList from './ThoughtList/ThoughtList';
-import { useLocation, Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import './App.css';
 
 function App() {
-  const location = useLocation();
-
   return (
     <main>
       <nav>
@@ -17,7 +15,9 @@ function App() {
       </header>
       <section>
         <h3>What's on your mind?</h3>
-        {location.pathname === '/' && <Link to='/thoughts/create'>Express a thought</Link>}
+        <Route exact path='/'>
+          <Link to='/thoughts/create'>Express a thought</Link>
+        </Route>
       </section>
       <ThoughtList />
     </main>
