@@ -3,9 +3,9 @@ import './ThoughtCard.css';
 
 function ThoughtCard(props) {
   return (
-    <section>
-      <p>Thought</p>
-    </section>
+    <div>
+      <p>{props.content}</p>
+    </div>
   )
 }
 

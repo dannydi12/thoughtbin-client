@@ -1,11 +1,16 @@
 import React from 'react';
-import './ThoughtList.css';
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
+import thoughts from './thought-fixture';
+import './ThoughtList.css';
 
 function ThoughtList() {
+  const allThoughts = thoughts.map(thought => <ThoughtCard key={thought.id} id={thought.id} content={thought.content} />)
+  //TO-DO: if on /thoughts, filter array for thoughts with matching user id
+
   return (
     <section>
-      <ThoughtCard />
+      {/* Input here for thoughts */}
+      {allThoughts}
     </section>
   )
 }
