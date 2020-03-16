@@ -16,7 +16,7 @@ function App() {
       <section>
         <h3>What's on your mind?</h3>
         <Route exact path='/'>
-          <Link to='/thoughts/create'>Express a thought</Link>
+          <Link to='/thoughts'>Express a thought</Link>
         </Route>
       </section>
       <ThoughtList />
