@@ -17,12 +17,16 @@ body {
   letter-spacing: 0.2px;
 }
 
-h1, h3 {
+h1, h2 {
   font-family: 'Nexa', 'Merriweather Sans', sans-serif;
 }
 
 h1 {
   font-size: 55px;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 p {
