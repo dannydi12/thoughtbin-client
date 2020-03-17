@@ -15,7 +15,6 @@ function ThoughtList() {
         <ThoughtForm />
       </Route>
       {allThoughts}
-      {/* when clicking the edit button on a thought, a form renders inside the card with the existing text */}
     </section>
   )
 }
