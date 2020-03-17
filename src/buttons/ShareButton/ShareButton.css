@@ -1,0 +1,19 @@
+.hidden {
+  display: none;
+}
+
+.share-button svg {
+  height: 30px;
+  width: 30px;
+  fill: #28ACFF;
+}
+
+.share-button svg:hover {
+  fill: #b34f36;
+}
+
+.share-button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
