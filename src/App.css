@@ -6,6 +6,7 @@ main {
 
 .banner {
   text-align: center;
+  color: #28ACFF;
 }
 
 .call-to-action {
@@ -15,6 +16,16 @@ main {
   width: 100%;
   padding: 70px 0px 70px 0px;
   color: #fff;
+}
+
+.call-to-action button {
+  background-color: #fff;
+  color: #000;
+  padding: 15px;
+  box-shadow: 1px 1px 10px #2188c9;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
 }
 
 .brainbox {

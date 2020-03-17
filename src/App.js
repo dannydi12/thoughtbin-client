@@ -1,13 +1,23 @@
 import React from 'react';
 import ThoughtList from './ThoughtList/ThoughtList';
-import { Link, Route } from "react-router-dom";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import './App.css';
 
 function App() {
+  const history = useHistory();
+  const match = useRouteMatch('/thoughts');
+
+  const switchViews = () => {
+    if (match) {
+      return history.push('/')
+    }
+    return history.push('/thoughts')
+  }
+
   return (
     <main>
       <nav>
-        <Link to='/thoughts'>Your thoughts</Link>
+        <Link to='/thoughts'>Your thoughts ></Link>
       </nav>
       <header className='banner'>
         <h1>ThoughtBin</h1>
@@ -42,9 +52,7 @@ function App() {
       </header>
       <section className='call-to-action'>
         <h2>What's on your mind?</h2>
-        <Route exact path='/'>
-          <Link to='/thoughts'>Express a thought</Link>
-        </Route>
+        <button onClick={switchViews}>{match ? 'View others\' thoughts' : 'Express a thought'}</button>
       </section>
       <ThoughtList />
     </main>
