@@ -7,15 +7,17 @@ function ThoughtCard(props) {
   const [isEditing, setIsEditing] = useState(false)
   const match = useRouteMatch('/thoughts')
   return (
-    <div>
+    <div className='thought-card'>
       {isEditing ? <ThoughtForm content={props.content} /> : <p>{props.content}</p>}
-      <div>
+      <div className='button-wrapper'>
         <button>Share</button>
 
-        {match && <>
-          <button onClick={() => setIsEditing(true)}>Edit icon</button>
-          <button>Trash icon</button>
-        </>
+        {
+          match &&
+          <>
+            <button onClick={() => setIsEditing(true)}>Edit icon</button>
+            <button>Trash icon</button>
+          </>
         }
       </div>
     </div>

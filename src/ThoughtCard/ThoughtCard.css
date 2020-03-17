@@ -1,0 +1,12 @@
+.thought-card {
+  box-shadow: 1px 1px 10px rgb(214, 214, 214);
+  margin-bottom: 25px;
+  border-radius: 15px;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* .thought-card {
+  border-bottom: 1px solid rgb(190, 190, 190);
+  padding: 20px;
+} */

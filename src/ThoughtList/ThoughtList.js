@@ -10,7 +10,7 @@ function ThoughtList() {
   //TO-DO: if on /thoughts, filter array for thoughts with matching user id
 
   return (
-    <section>
+    <section className='thought-list'>
       <Route path='/thoughts'>
         <ThoughtForm />
       </Route>

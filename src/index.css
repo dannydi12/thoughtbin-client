@@ -12,14 +12,32 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
 }
 
 h1, h3 {
   font-family: 'Nexa', 'Merriweather Sans', sans-serif;
 }
 
+h1 {
+  font-size: 55px;
+}
+
 p {
   /* font-family: 'Helvetica Neue'; */
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  box-shadow: 1px 1px 10px rgb(197, 197, 197);
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  float: right;
 }
 
 code {

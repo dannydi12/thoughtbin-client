@@ -13,7 +13,7 @@ function App() {
         <h1>ThoughtBin</h1>
         <p>A place for your thoughts.</p>
       </header>
-      <section>
+      <section className='call-to-action'>
         <h3>What's on your mind?</h3>
         <Route exact path='/'>
           <Link to='/thoughts'>Express a thought</Link>
