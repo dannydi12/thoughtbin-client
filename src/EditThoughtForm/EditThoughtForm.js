@@ -3,10 +3,13 @@ import './EditThoughtForm.css';
 
 function EditThoughtForm(props) {
   return (
-    <form>
+    <form className='thought-form'>
       {/* dont want a label but must still be a11y */}
-      <textarea placeholder='An essay on why bananas are green...' defaultValue={props.content}></textarea>
-      <button type='submit'>Express</button>
+      <textarea defaultValue={props.content}></textarea>
+      <div className='edit-thought-button-wrapper'>
+        <button onClick={props.cancelEdit} type='button'>Cancel</button>
+        <button onClick={props.editThought} type='submit'>Re-Express</button>
+      </div>
     </form>
   )
 }

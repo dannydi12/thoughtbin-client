@@ -1,0 +1,9 @@
+.edit-thought-button-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.edit-thought-button-wrapper button{
+  margin-left: 0 !important;
+}

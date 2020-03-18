@@ -1,21 +1,23 @@
-.new-thought-form {
+.thought-form {
   box-shadow: 1px 1px 10px rgb(214, 214, 214);
   margin: 25px 0px 0px 0px;
   border-radius: 15px;
   max-width: 400px;
   padding: 20px 20px 20px 20px;
-  width: 90%;
+  width: 100%;
 }
 
-.new-thought-form textarea {
+.thought-form textarea {
   width: 100%;
   height: 250px;
   resize: none;
   border: none;
   font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
 }
 
-.new-thought-form button {
+.thought-form button {
   background-color: #000;
   color: #fff;
   padding: 15px;

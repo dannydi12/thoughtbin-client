@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouteMatch } from "react-router-dom";
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
-import ThoughtForm from '../ThoughtForm/ThoughtForm';
+import NewThoughtForm from '../NewThoughtForm/NewThoughtForm';
 import thoughts from './thought-fixture';
 import './ThoughtList.css';
 
@@ -12,7 +12,7 @@ function ThoughtList() {
 
   return (
     <section className='thought-list'>
-      {match && <ThoughtForm />}
+      {match && <NewThoughtForm />}
       {allThoughts}
     </section>
   )

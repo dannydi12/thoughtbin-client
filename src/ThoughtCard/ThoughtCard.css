@@ -4,6 +4,7 @@
   border-radius: 15px;
   max-width: 400px;
   padding: 0px 20px 10px 20px;
+  width: 100%;
 }
 
 /* .thought-card {
@@ -14,4 +15,10 @@
 .thought-card .button-wrapper {
   display: flex;
   justify-content: flex-end;
+}
+
+.thought-card > .thought-form {
+  padding: 15px 0px 10px 0px;
+  margin: 0;
+  box-shadow: none;
 }

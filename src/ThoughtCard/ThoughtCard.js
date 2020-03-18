@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useRouteMatch } from "react-router-dom";
-import ThoughtForm from '../ThoughtForm/ThoughtForm';
 import ShareButton from '../buttons/ShareButton/ShareButton';
 import EditButton from '../buttons/EditButton/EditButton';
-import './ThoughtCard.css';
 import DeleteButton from '../buttons/DeleteButton/DeleteButton';
+import EditThoughtForm from '../EditThoughtForm/EditThoughtForm';
+import './ThoughtCard.css';
 
 function ThoughtCard(props) {
   const [isEditing, setIsEditing] = useState(false)
@@ -15,18 +15,21 @@ function ThoughtCard(props) {
   }
 
   const deleteThought = () => {
-    console.log('deleted')
+    console.log('deleted') // this should be imported from a service file
   }
 
   return (
     <div className='thought-card'>
-      {isEditing ? <ThoughtForm content={props.content} /> : <p>{props.content}</p>}
-      <div className='button-wrapper'>
-        {match && <EditButton clickFunction={() => setIsEditing(true)} />}
-        {match && <DeleteButton clickFunction={deleteThought}/>}
-        <ShareButton clickFunction={copyLink} />
-
-      </div>
+      {isEditing && match ? <EditThoughtForm content={props.content} />
+        : <>
+          <p>{props.content}</p>
+          <div className='button-wrapper'>
+            {match && <EditButton clickFunction={() => setIsEditing(true)} />}
+            {match && <DeleteButton clickFunction={deleteThought} />}
+            <ShareButton clickFunction={copyLink} />
+          </div>
+        </>
+      }
     </div>
   )
 }
