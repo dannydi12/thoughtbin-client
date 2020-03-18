@@ -1,9 +1,9 @@
 .thought-card {
   box-shadow: 1px 1px 10px rgb(214, 214, 214);
-  margin-bottom: 25px;
+  margin: 25px 0px 0px 0px;
   border-radius: 15px;
   max-width: 400px;
-  padding: 20px;
+  padding: 0px 20px 10px 20px;
 }
 
 /* .thought-card {
