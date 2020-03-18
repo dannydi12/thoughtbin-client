@@ -20,7 +20,7 @@ function ThoughtCard(props) {
 
   return (
     <div className='thought-card'>
-      {isEditing && match ? <EditThoughtForm content={props.content} />
+      {isEditing && match ? <EditThoughtForm id={props.id} content={props.content} />
         : <>
           <p>{props.content}</p>
           <div className='button-wrapper'>
