@@ -7,18 +7,14 @@
   width: 100%;
 }
 
-/* .thought-card {
-  border-bottom: 1px solid rgb(190, 190, 190);
-  padding: 20px;
-} */
-
 .thought-card .button-wrapper {
   display: flex;
   justify-content: flex-end;
 }
 
 .thought-card > .thought-form {
-  padding: 15px 0px 10px 0px;
+  padding: 16px 0px 10px 0px !important;
   margin: 0;
   box-shadow: none;
+  box-sizing: border-box;
 }
