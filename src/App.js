@@ -17,7 +17,7 @@ function App() {
   return (
     <main>
       <header className='banner'>
-        <h1>ThoughtBin</h1>
+        <h1><Link to='/'>ThoughtBin</Link></h1>
         <p>A place for your thoughts.</p>
         <svg className='brainbox' viewBox="-2 0 480 480" xmlns="http://www.w3.org/2000/svg">
           <path d="m325.65625 80 16 24v40l-24 24v16l-32 8-8 24h-24l-16-16v-176l16-16h24l8 24h24l16 16zm0 0" fill="#8fceec67" />
