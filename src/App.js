@@ -16,9 +16,6 @@ function App() {
 
   return (
     <main>
-      <nav>
-        <Link to='/thoughts'>Your thoughts ></Link>
-      </nav>
       <header className='banner'>
         <h1>ThoughtBin</h1>
         <p>A place for your thoughts.</p>

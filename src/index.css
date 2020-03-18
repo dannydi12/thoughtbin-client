@@ -33,6 +33,14 @@ p {
   /* font-family: 'Helvetica Neue'; */
 }
 
+a:visited {
+  color: #28acff
+}
+
+a {
+  color: #28acff
+}
+
 /* 
 button {
   background-color: #000;
