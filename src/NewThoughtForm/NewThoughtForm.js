@@ -3,7 +3,7 @@ import { formHandler } from '../Utils';
 import './NewThoughtForm.css';
 
 function NewThoughtForm(props) {
-  const [ , setThoughtForm] = useState({
+  const [, setThoughtForm] = useState({
     length: null
   })
 
@@ -13,10 +13,19 @@ function NewThoughtForm(props) {
     })
   }, [])
 
+  const submitForm = (e) => {
+    e.preventDefault()
+    props.createThought({
+      id: props.allThoughts.length + 1,
+      user: 1,
+      content: e.target.thought.value
+    })
+  }
 
   return (
-    <form className='thought-form'>
+    <form onSubmit={submitForm} className='thought-form'>
       <textarea id='create-new-thought'
+        name='thought'
         aria-label="Post a thought"
         placeholder='An essay on why bananas are green...'
         defaultValue={props.content}

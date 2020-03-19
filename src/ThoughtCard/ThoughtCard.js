@@ -20,12 +20,12 @@ function ThoughtCard(props) {
 
   return (
     <div className='thought-card'>
-      {isEditing && match ? <EditThoughtForm id={props.id} content={props.content} />
+      {isEditing && match ? <EditThoughtForm thought={props.thought} cancelEdit={() => setIsEditing(false)} />
         : <>
-          <p>{props.content}</p>
+          <p>{props.thought.content}</p>
           <div className='button-wrapper'>
             {match && <EditButton clickFunction={() => setIsEditing(true)} />}
-            {match && <DeleteButton clickFunction={deleteThought} />}
+            {match && <DeleteButton clickFunction={() => props.deleteThought(props.thought.id)} />}
             <ShareButton clickFunction={copyLink} />
           </div>
         </>
