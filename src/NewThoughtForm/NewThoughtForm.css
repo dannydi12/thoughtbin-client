@@ -19,7 +19,7 @@
 }
 
 .thought-form button {
-  background-color: #000;
+  background-color: rgb(5, 9, 20);
   color: #fff;
   padding: 15px;
   box-shadow: 1px 1px 10px #d8d8d8;
@@ -28,4 +28,16 @@
   font-size: 16px;
   margin-left: auto;
   display: block;
+}
+
+.thought-form button:hover {
+  background-color: #fff;
+  color: rgb(5, 9, 20);
+  box-shadow: 1px 1px 10px #c2c2c2;
+}
+
+.thought-form button:focus {
+  background-color: #fff;
+  color: rgb(5, 9, 20);
+  box-shadow: 1px 1px 10px #c2c2c2;
 }

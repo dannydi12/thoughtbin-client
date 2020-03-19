@@ -41,6 +41,10 @@ a {
   color: #28acff
 }
 
+button:focus {
+  outline: none;
+}
+
 /* 
 button {
   background-color: #000;

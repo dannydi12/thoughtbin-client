@@ -12,6 +12,10 @@
   fill: rgb(15, 79, 189);
 }
 
+.edit-button:focus svg {
+  fill: rgb(15, 79, 189);
+}
+
 .edit-button {
   color: #000;
   border: none;

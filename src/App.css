@@ -33,6 +33,16 @@ main {
   margin-top: 15px;
 }
 
+.call-to-action button:focus {
+  background-color: rgb(5, 9, 20);
+  color: #fff;
+}
+
+.call-to-action button:hover {
+  background-color: rgb(5, 9, 20);
+  color: #fff;
+}
+
 .brainbox {
   padding: 30px;
   height: 200px;

@@ -12,7 +12,7 @@
   fill: #FF3366;
 }
 
-.delete-button:focus {
+.delete-button:focus svg{
   fill: #FF3366;
 }
 

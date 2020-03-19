@@ -12,6 +12,10 @@
   fill: #b34f36;
 }
 
+.share-button:focus svg {
+  fill: #b34f36;
+}
+
 .share-button {
   color: #000;
   border: none;
