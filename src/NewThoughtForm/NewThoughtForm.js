@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { formHandler } from '../Utils';
 import './NewThoughtForm.css';
 
 function NewThoughtForm(props) {
-  const autoExpand = (field) => {
-    field.style.height = 'inherit';
-    field.style.height = field.scrollHeight + 'px';
-  };
+  const [ , setThoughtForm] = useState({
+    length: null
+  })
+
+  useEffect(() => {
+    setThoughtForm({
+      length: document.getElementById('create-new-thought').value.length
+    })
+  }, [])
+
 
   return (
     <form className='thought-form'>
@@ -13,7 +20,7 @@ function NewThoughtForm(props) {
         aria-label="Post a thought"
         placeholder='An essay on why bananas are green...'
         defaultValue={props.content}
-        onChange={(e) => autoExpand(e.target)} /> {/* Should call a handler that keeps character count, autoexpands, etc */}
+        onChange={(e) => formHandler(e.target, setThoughtForm)} />
       <button type='submit'>Express</button>
     </form>
   )
