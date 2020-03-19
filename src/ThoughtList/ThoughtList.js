@@ -13,7 +13,7 @@ function ThoughtList() {
 
   const editThought = (updatedThought) => {
     setThoughts({
-      allThoughts: thoughts.map(thought => updatedThought.id === thought.id ? updatedThought : undefined)
+      allThoughts: thoughts.allThoughts.map(thought => updatedThought.id === thought.id ? updatedThought : thought)
     })
   }
 

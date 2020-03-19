@@ -18,8 +18,18 @@ function EditThoughtForm(props) {
     textarea.selectionStart = textarea.value.length
   }, [props.thought.id]);
 
+  const submitForm = (e) => {
+    e.preventDefault()
+    props.editThought({
+      id: props.thought.id,
+      user: 1,
+      content: e.target.thought.value
+    })
+    props.cancelEdit()
+  }
+
   return (
-    <form id={`thought-${props.thought.id}`} className='thought-form'>
+    <form onSubmit={submitForm} id={`thought-${props.thought.id}`} className='thought-form'>
       <textarea onChange={(e) => formHandler(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
       <div className='edit-thought-button-wrapper'>
         <button onClick={props.cancelEdit} type='button'>Cancel</button>
