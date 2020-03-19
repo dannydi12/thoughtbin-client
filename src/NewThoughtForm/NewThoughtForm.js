@@ -5,7 +5,7 @@ function NewThoughtForm(props) {
   return (
     <form className='thought-form'>
       {/* dont want a label but must still be a11y */}
-      <textarea aria-label="Post a thought" placeholder='An essay on why bananas are green...' defaultValue={props.content} />
+      <textarea id='create-new-thought' aria-label="Post a thought" placeholder='An essay on why bananas are green...' defaultValue={props.content} />
       <button type='submit'>Express</button>
     </form>
   )
