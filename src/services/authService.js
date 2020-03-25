@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import config from '../config';
 
 export function getToken() {
@@ -16,4 +17,8 @@ export function getToken() {
     .catch(err => {
       console.log(JSON.stringify(err))
     })
+}
+
+export function decodeToken() {
+  return jwt.decode(localStorage.getItem('token'));
 }

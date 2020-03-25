@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { createNewThought } from '../services/thoughtService';
+import { decodeToken } from '../services/authService';
 import { formHandler } from '../Utils';
 import './NewThoughtForm.css';
 
@@ -15,9 +17,8 @@ function NewThoughtForm(props) {
 
   const submitForm = (e) => {
     e.preventDefault()
-    props.createThought({
-      id: props.allThoughts.length + 1,
-      user: 1,
+    createNewThought({
+      userId: decodeToken().userId,
       content: e.target.thought.value
     })
   }
