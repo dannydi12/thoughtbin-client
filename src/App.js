@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getToken } from './services/authService';
+import { getAllThoughts } from './services/thoughtService';
 import ThoughtList from './ThoughtList/ThoughtList';
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import './App.css';
@@ -8,9 +9,33 @@ function App() {
   const history = useHistory();
   const match = useRouteMatch('/thoughts');
 
+  const [thoughts, setThoughts] = useState({
+    allThoughts: [],
+    userThoughts: []
+  })
+
+  const changeState = (key, value) => {
+    const rest = {};
+    Object.keys(thoughts).forEach(key => rest[key] = thoughts[key])
+    
+    setThoughts({
+      ...rest,
+      [key]: value
+    })
+  }
+
   useEffect(() => {
-    if(!localStorage.getItem('token')) {
+    if (!localStorage.getItem('token')) {
       getToken()
+      getAllThoughts()
+        .then(thoughts => {
+          changeState('allThoughts', thoughts)
+        })
+    } else {
+      getAllThoughts()
+        .then(thoughts => {
+          changeState('allThoughts', thoughts)
+        })
     }
   }, [])
 
@@ -52,13 +77,12 @@ function App() {
             <path d="m197.65625 147.3125 5.65625-5.65625-11.3125-11.3125-8 8c-1.5 1.5-2.34375 3.535156-2.34375 5.65625v16h16zm0 0" />
           </g>
         </svg>
-
       </header>
       <section className='call-to-action'>
         <h2>What's on your mind?</h2>
         <button onClick={switchViews}>{match ? 'View others\' thoughts' : 'Express a thought'}</button>
       </section>
-      <ThoughtList />
+      <ThoughtList thoughts={thoughts} />
     </main>
   );
 }

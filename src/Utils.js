@@ -1,4 +1,4 @@
-const formHandler = (thought, setThoughtForm) => {
+export const formHandler = (thought, setThoughtForm) => {
   autoExpandText(thought)
 
   setThoughtForm({
@@ -10,5 +10,3 @@ const autoExpandText = (field) => {
   field.style.height = 'inherit';
   field.style.height = field.scrollHeight + 'px';
 }
-
-export {formHandler};

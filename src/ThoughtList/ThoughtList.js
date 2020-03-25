@@ -1,45 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRouteMatch } from "react-router-dom";
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
 import NewThoughtForm from '../NewThoughtForm/NewThoughtForm';
-import thoughtsList from './thought-fixture';
 import './ThoughtList.css';
 
-function ThoughtList() {
-  const [thoughts, setThoughts] = useState({
-    allThoughts: thoughtsList.sort((a, b) => b.id - a.id)
-  })
+function ThoughtList(props) {
+
   const match = useRouteMatch('/thoughts')
+  let thoughtCards = makeCards();
 
-  const editThought = (updatedThought) => {
-    setThoughts({
-      allThoughts: thoughts.allThoughts.map(thought => updatedThought.id === thought.id ? updatedThought : thought)
-    })
-  }
-
-  const deleteThought = (id) => {
-    setThoughts({
-      allThoughts: thoughts.allThoughts.filter(thought => id !== thought.id)
-    })
-  }
-
-  const createThought = (thought) => {
-    setThoughts({
-      allThoughts: [...thoughts.allThoughts, thought].sort((a, b) => b.id - a.id)
-    })
-  }
-
-  const thoughtCards = thoughts.allThoughts.filter(thought => {
+  function makeCards() {
     if (match) {
-      return thought.user === 1
+      return props.thoughts.userThoughts.map(thought =>
+        <ThoughtCard key={thought.id} thought={thought} />
+      )
+    } else {
+      return props.thoughts.allThoughts.map(thought =>
+        <ThoughtCard key={thought.id} thought={thought} />
+      )
     }
-    else {
-      return true
-    }
-  })
-    .map(thought =>
-      <ThoughtCard key={thought.id} thought={thought} deleteThought={deleteThought} editThought={editThought} />
-    )
+  }
+
+
+  // const editThought = (updatedThought) => {
+  //   setThoughts({
+  //     allThoughts: thoughts.allThoughts.map(thought => updatedThought.id === thought.id ? updatedThought : thought)
+  //   })
+  // }
+
+  // const deleteThought = (id) => {
+  //   setThoughts({
+  //     allThoughts: thoughts.allThoughts.filter(thought => id !== thought.id)
+  //   })
+  // }
+
+  // const thoughtCards = thoughts.allThoughts.map(thought =>
+  //   <ThoughtCard key={thought.id} thought={thought} deleteThought={deleteThought} editThought={editThought} />
+  // )
 
   useEffect(() => {
     if (match) {
@@ -50,7 +47,7 @@ function ThoughtList() {
 
   return (
     <section className='thought-list'>
-      {match && <NewThoughtForm allThoughts={thoughts.allThoughts} createThought={createThought} />}
+      {match && <NewThoughtForm />}
       {thoughtCards}
     </section>
   )
