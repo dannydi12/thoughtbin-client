@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getToken } from './services/authService';
 import ThoughtList from './ThoughtList/ThoughtList';
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import './App.css';
@@ -6,6 +7,12 @@ import './App.css';
 function App() {
   const history = useHistory();
   const match = useRouteMatch('/thoughts');
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')) {
+      getToken()
+    }
+  }, [])
 
   const switchViews = () => {
     if (match) {
