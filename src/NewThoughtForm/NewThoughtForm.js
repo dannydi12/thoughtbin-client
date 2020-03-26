@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ThoughtContext from '../contexts/ThoughtContext';
 import { createNewThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
 import { formHandler } from '../Utils';
@@ -8,6 +9,8 @@ function NewThoughtForm(props) {
   const [, setThoughtForm] = useState({
     length: null
   })
+
+  const thought = useContext(ThoughtContext)
 
   useEffect(() => {
     setThoughtForm({
@@ -20,6 +23,9 @@ function NewThoughtForm(props) {
     createNewThought({
       userId: decodeToken().userId,
       content: e.target.thought.value
+    })
+    .then(newThought => {
+      thought.addThought(newThought);
     })
   }
 
