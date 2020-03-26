@@ -31,7 +31,7 @@ function EditThoughtForm(props) {
       content: e.target.thought.value
     })
     .then(updatedThought => {
-      thought.editThought(updatedThought)
+      thought.editThoughtInList(updatedThought)
     })
     props.cancelEdit()
   }
@@ -41,7 +41,7 @@ function EditThoughtForm(props) {
       <textarea onChange={(e) => formHandler(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
       <div className='edit-thought-button-wrapper'>
         <button onClick={props.cancelEdit} type='button'>Cancel</button>
-        <button onClick={props.editThought} type='submit'>Re-Express</button>
+        <button type='submit'>Re-Express</button>
       </div>
     </form>
   )

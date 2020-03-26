@@ -15,14 +15,14 @@ function App() {
     userThoughts: []
   })
 
-  const addThought = (newThought) => {
+  const addToThoughtList = (newThought) => {
     setThoughts({
       ...thoughts,
       userThoughts: [...thoughts.userThoughts, newThought]
     })
   }
 
-  const editThought = (editedThought) => {
+  const editThoughtInList = (editedThought) => {
     const withEditedThought = thoughts.userThoughts.map(thought => {
       if (thought.id === editedThought.id) {
         thought.content = editedThought.content;
@@ -69,8 +69,8 @@ function App() {
 
   return (
     <ThoughtContext.Provider value={{
-      addThought,
-      editThought,
+      addToThoughtList,
+      editThoughtInList,
       removeFromThoughtList
     }}>
       <main>

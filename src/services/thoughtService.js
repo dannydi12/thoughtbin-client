@@ -91,7 +91,7 @@ export function deleteThought(id) {
       if (!response.ok) {
         throw new Error(response)
       }
-      return response.json();
+      return;
     })
     .catch(err => {
       console.log(err)

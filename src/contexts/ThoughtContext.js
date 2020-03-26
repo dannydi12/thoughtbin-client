@@ -1,9 +1,9 @@
 import React from 'react';
 
 const ThoughtContext = React.createContext({
-  addThought: () => {},
+  addToThoughtList: () => {},
   removeFromThoughtList: () => {},
-  editThought: () => {}
+  editThoughtInList: () => {}
 })
 
 export default ThoughtContext;
