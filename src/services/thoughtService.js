@@ -14,9 +14,6 @@ export function getAllThoughts() {
       }
       return response.json();
     })
-    .then(thoughts => {
-      return thoughts
-    })
     .catch(err => {
       console.log(err)
     })
@@ -36,9 +33,6 @@ export function getUserThoughts() {
         throw new Error(response)
       }
       return response.json();
-    })
-    .then(userThoughts => {
-      return userThoughts
     })
     .catch(err => {
       console.log(err)
@@ -60,11 +54,8 @@ export function createNewThought(thought) {
       }
       return response.json();
     })
-    .then(thoughts => {
-      return thoughts
-    })
     .catch(err => {
-      console.log(`Bearer ${localStorage.getItem('token')}`)
+      console.log(err)
     })
 }
 
@@ -83,11 +74,8 @@ export function updateThought(thought) {
       }
       return response.json();
     })
-    .then(thoughts => {
-      return thoughts
-    })
     .catch(err => {
-      console.log(`Bearer ${localStorage.getItem('token')}`)
+      console.log(err)
     })
 }
 
@@ -105,10 +93,7 @@ export function deleteThought(id) {
       }
       return response.json();
     })
-    .then(thoughts => {
-      return thoughts
-    })
     .catch(err => {
-      console.log(`Bearer ${localStorage.getItem('token')}`)
+      console.log(err)
     })
 }

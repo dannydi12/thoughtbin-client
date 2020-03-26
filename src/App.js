@@ -15,16 +15,6 @@ function App() {
     userThoughts: []
   })
 
-  // const changeState = (key, value) => {
-  //   const rest = {};
-  //   Object.keys(thoughts).forEach(key => rest[key] = thoughts[key])
-
-  //   setThoughts({
-  //     ...rest,
-  //     [key]: value
-  //   })
-  // }
-
   const addThought = (newThought) => {
     setThoughts({
       ...thoughts,

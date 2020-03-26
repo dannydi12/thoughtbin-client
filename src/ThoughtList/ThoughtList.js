@@ -21,23 +21,6 @@ function ThoughtList(props) {
     }
   }
 
-
-  // const editThought = (updatedThought) => {
-  //   setThoughts({
-  //     allThoughts: thoughts.allThoughts.map(thought => updatedThought.id === thought.id ? updatedThought : thought)
-  //   })
-  // }
-
-  // const deleteThought = (id) => {
-  //   setThoughts({
-  //     allThoughts: thoughts.allThoughts.filter(thought => id !== thought.id)
-  //   })
-  // }
-
-  // const thoughtCards = thoughts.allThoughts.map(thought =>
-  //   <ThoughtCard key={thought.id} thought={thought} deleteThought={deleteThought} editThought={editThought} />
-  // )
-
   useEffect(() => {
     if (match) {
       const createThoughtForm = document.getElementById(`create-new-thought`);
