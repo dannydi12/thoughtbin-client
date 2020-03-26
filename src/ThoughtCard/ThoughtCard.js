@@ -20,7 +20,7 @@ function ThoughtCard(props) {
 
   return (
     <div className='thought-card'>
-      {isEditing && match ? <EditThoughtForm thought={props.thought} cancelEdit={() => setIsEditing(false)} editThought={props.editThought} />
+      {isEditing && match ? <EditThoughtForm thought={props.thought} cancelEdit={() => setIsEditing(false)} />
         : <>
           <p>{props.thought.content}</p>
           <div className='button-wrapper'>

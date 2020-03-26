@@ -25,10 +25,26 @@ function App() {
   //   })
   // }
 
-  const addUserThought = (newThought) => {
+  const addThought = (newThought) => {
     setThoughts({
       ...thoughts,
       userThoughts: [...thoughts.userThoughts, newThought]
+    })
+  }
+
+  const editThought = (editedThought) => {
+    const withEditedThought = thoughts.userThoughts.map(thought => {
+      if (thought.id === editedThought.id) {
+        thought.content = editedThought.content;
+        return thought;
+      } else {
+        return thought;
+      }
+    })
+
+    setThoughts({
+      ...thoughts,
+      userThoughts: withEditedThought
     })
   }
 
@@ -55,7 +71,8 @@ function App() {
 
   return (
     <ThoughtContext.Provider value={{
-      addUserThought
+      addThought,
+      editThought
     }}>
       <main>
         <header className='banner'>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ThoughtContext = React.createContext({
-  addUserThought: () => {},
+  addThought: () => {},
   deleteThought: () => {},
   editThought: () => {}
 })

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { updateThought } from '../services/thoughtService';
+import { decodeToken } from '../services/authService';
+import ThoughtContext from '../contexts/ThoughtContext';
 import { formHandler } from '../Utils';
 import './EditThoughtForm.css';
 
@@ -6,6 +9,8 @@ function EditThoughtForm(props) {
   const [, setThoughtForm] = useState({
     length: null
   })
+
+  const thought = useContext(ThoughtContext);
 
   useEffect(() => {
     const textarea = document.getElementById(`thought-${props.thought.id}`).elements.thought;
@@ -20,10 +25,13 @@ function EditThoughtForm(props) {
 
   const submitForm = (e) => {
     e.preventDefault()
-    props.editThought({
+    updateThought({
       id: props.thought.id,
-      user: 1,
+      userId: decodeToken().userId,
       content: e.target.thought.value
+    })
+    .then(updatedThought => {
+      thought.editThought(updatedThought)
     })
     props.cancelEdit()
   }
