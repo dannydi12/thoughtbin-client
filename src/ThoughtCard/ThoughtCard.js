@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useRouteMatch } from "react-router-dom";
+import { deleteThought } from '../services/thoughtService';
+import ThoughtContext from '../contexts/ThoughtContext';
 import ShareButton from '../buttons/ShareButton/ShareButton';
 import EditButton from '../buttons/EditButton/EditButton';
 import DeleteButton from '../buttons/DeleteButton/DeleteButton';
@@ -10,12 +12,15 @@ function ThoughtCard(props) {
   const [isEditing, setIsEditing] = useState(false)
   const match = useRouteMatch('/thoughts')
 
+  const thought = useContext(ThoughtContext);
+
   const copyLink = () => {
     console.log('copied')
   }
 
-  const deleteThought = () => {
-    console.log('deleted') // this should be imported from a service file
+  const removeThought = () => {
+    deleteThought(props.thought.id)
+      .then(thought.removeFromThoughtList(props.thought.id))
   }
 
   return (
@@ -25,7 +30,7 @@ function ThoughtCard(props) {
           <p>{props.thought.content}</p>
           <div className='button-wrapper'>
             {match && <EditButton clickFunction={() => setIsEditing(true)} />}
-            {match && <DeleteButton clickFunction={() => props.deleteThought(props.thought.id)} />}
+            {match && <DeleteButton clickFunction={removeThought} />}
             <ShareButton clickFunction={copyLink} />
           </div>
         </>

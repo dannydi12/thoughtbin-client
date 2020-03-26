@@ -90,3 +90,25 @@ export function updateThought(thought) {
       console.log(`Bearer ${localStorage.getItem('token')}`)
     })
 }
+
+export function deleteThought(id) {
+  return fetch(`${config.API_URL}/thoughts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json'
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response)
+      }
+      return response.json();
+    })
+    .then(thoughts => {
+      return thoughts
+    })
+    .catch(err => {
+      console.log(`Bearer ${localStorage.getItem('token')}`)
+    })
+}

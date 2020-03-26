@@ -48,6 +48,14 @@ function App() {
     })
   }
 
+  const removeFromThoughtList = (thoughtId) => {
+    setThoughts({
+      ...thoughts,
+      allThoughts: thoughts.allThoughts.filter(thought => thought.id !== thoughtId),
+      userThoughts: thoughts.userThoughts.filter(thought => thought.id !== thoughtId)
+    })
+  }
+
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       getToken()
@@ -72,7 +80,8 @@ function App() {
   return (
     <ThoughtContext.Provider value={{
       addThought,
-      editThought
+      editThought,
+      removeFromThoughtList
     }}>
       <main>
         <header className='banner'>
