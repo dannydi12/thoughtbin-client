@@ -25,7 +25,7 @@ function NewThoughtForm(props) {
       content: e.target.thought.value
     })
     .then(newThought => {
-      thought.addThought(newThought);
+      thought.addUserThought(newThought);
     })
   }
 

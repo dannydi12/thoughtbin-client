@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ThoughtContext from './contexts/ThoughtContext';
 import { getToken } from './services/authService';
-import { getAllThoughts } from './services/thoughtService';
+import { getAllThoughts, getUserThoughts } from './services/thoughtService';
 import ThoughtList from './ThoughtList/ThoughtList';
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import './App.css';
@@ -15,29 +15,35 @@ function App() {
     userThoughts: []
   })
 
-  const changeState = (key, value) => {
-    const rest = {};
-    Object.keys(thoughts).forEach(key => rest[key] = thoughts[key])
+  // const changeState = (key, value) => {
+  //   const rest = {};
+  //   Object.keys(thoughts).forEach(key => rest[key] = thoughts[key])
 
+  //   setThoughts({
+  //     ...rest,
+  //     [key]: value
+  //   })
+  // }
+
+  const addUserThought = (newThought) => {
     setThoughts({
-      ...rest,
-      [key]: value
+      ...thoughts,
+      userThoughts: [...thoughts.userThoughts, newThought]
     })
-  }
-
-  const addThought = (newThought) => {
-    changeState('userThoughts', [...thoughts.userThoughts, newThought])
   }
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       getToken()
     }
-    getAllThoughts()
-      .then(thoughts => {
-        changeState('allThoughts', thoughts)
-      })
 
+    Promise.all([getAllThoughts(), getUserThoughts()])
+      .then(response => {
+        setThoughts({
+          allThoughts: response[0],
+          userThoughts: response[1]
+        })
+      })
   }, [])
 
   const switchViews = () => {
@@ -49,7 +55,7 @@ function App() {
 
   return (
     <ThoughtContext.Provider value={{
-      addThought
+      addUserThought
     }}>
       <main>
         <header className='banner'>
