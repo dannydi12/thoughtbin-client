@@ -2,22 +2,21 @@ import React, { useEffect, useState, useContext } from 'react';
 import { updateThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
 import ThoughtContext from '../contexts/ThoughtContext';
-import { formHandler } from '../Utils';
+// import { formHandleChange } from '../Utils';
 import './EditThoughtForm.css';
 
 function EditThoughtForm(props) {
-  const [, setThoughtForm] = useState({
-    length: null
+  const [thought, setThoughtForm] = useState({
+    untouched: true,
+    content: null
   })
 
-  const thought = useContext(ThoughtContext);
+  const [error, setError] = useState(null)
+
+  const thoughtContext = useContext(ThoughtContext);
 
   useEffect(() => {
     const textarea = document.getElementById(`thought-${props.thought.id}`).elements.thought;
-    
-    setThoughtForm({
-      length: textarea.value.length
-    })
 
     textarea.focus();
     textarea.selectionStart = textarea.value.length
@@ -28,20 +27,60 @@ function EditThoughtForm(props) {
     updateThought({
       id: props.thought.id,
       userId: decodeToken().userId,
-      content: e.target.thought.value
+      content: thought.content
     })
-    .then(updatedThought => {
-      thought.editThoughtInList(updatedThought)
+      .then(updatedThought => {
+        thoughtContext.editThoughtInList(updatedThought)
+        props.cancelEdit()
+      })
+      .catch(error => {
+        setError(error.message)
+      })
+  }
+
+  useEffect(() => {
+    validateContent()
+  }, [thought.content])
+
+  const formHandleChange = (thoughtEvent) => {
+    thoughtEvent.style.height = 'inherit';
+    thoughtEvent.style.height = thoughtEvent.scrollHeight + 'px';
+
+    setThoughtForm({
+      content: thoughtEvent.value,
     })
-    props.cancelEdit()
+  }
+
+  const validateContent = () => {
+    if(thought.untouched) {
+      return;
+    }
+
+    if (thought.content === props.thought.content) {
+      setError('You must change your thought to re-express.')
+      return;
+    }
+
+    if (thought.content.length > 500) {
+      setError('Your thought must be shorter than 500 characters.')
+      return;
+    }
+
+    if (thought.content.length <= 3) {
+      setError('Your thought must be longer than 3 characters.')
+      return;
+    }
+
+    setError(false)
   }
 
   return (
     <form onSubmit={submitForm} id={`thought-${props.thought.id}`} className='thought-form'>
-      <textarea onChange={(e) => formHandler(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
+      <textarea onChange={(e) => formHandleChange(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
+      {error && <p className='error'>{error}</p>}
       <div className='edit-thought-button-wrapper'>
         <button onClick={props.cancelEdit} type='button'>Cancel</button>
-        <button type='submit'>Re-Express</button>
+        <button disabled={error || thought.untouched} type='submit'>Re-Express</button>
       </div>
     </form>
   )

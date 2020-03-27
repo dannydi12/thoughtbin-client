@@ -50,12 +50,9 @@ export function createNewThought(thought) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error(response)
+        return response.text().then(text => { throw new Error(text) })
       }
       return response.json();
-    })
-    .catch(err => {
-      console.log(err)
     })
 }
 
@@ -70,12 +67,9 @@ export function updateThought(thought) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error(response)
+        return response.text().then(text => { throw new Error(text) })
       }
       return response.json();
-    })
-    .catch(err => {
-      console.log(err)
     })
 }
 

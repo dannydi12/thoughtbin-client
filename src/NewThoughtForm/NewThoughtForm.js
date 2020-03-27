@@ -2,31 +2,62 @@ import React, { useState, useEffect, useContext } from 'react';
 import ThoughtContext from '../contexts/ThoughtContext';
 import { createNewThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
-import { formHandler } from '../Utils';
 import './NewThoughtForm.css';
 
 function NewThoughtForm(props) {
-  const [, setThoughtForm] = useState({
-    length: null
+  const [error, setError] = useState(null)
+  const [thought, setThoughtForm] = useState({
+    untouched: true,
+    content: null
   })
 
-  const thought = useContext(ThoughtContext)
-
-  useEffect(() => {
-    setThoughtForm({
-      length: document.getElementById('create-new-thought').value.length
-    })
-  }, [])
+  const thoughtContext = useContext(ThoughtContext)
 
   const submitForm = (e) => {
     e.preventDefault()
+    e.persist()
     createNewThought({
       userId: decodeToken().userId,
-      content: e.target.thought.value
+      content: thought.content
     })
-    .then(newThought => {
-      thought.addToThoughtList(newThought);
+      .then(newThought => {
+        thoughtContext.addToThoughtList(newThought);
+        e.target.thought.value = ''
+      })
+      .catch(error => {
+        setError(error.message)
+      })
+  }
+
+  const formHandleChange = (thoughtEvent) => {
+    thoughtEvent.style.height = 'inherit';
+    thoughtEvent.style.height = thoughtEvent.scrollHeight + 'px';
+
+    setThoughtForm({
+      content: thoughtEvent.value,
     })
+  }
+
+  useEffect(() => {
+    validateContent()
+  }, [thought.content])
+
+  const validateContent = () => {
+    if (thought.untouched) {
+      return;
+    }
+
+    if (thought.content.length > 500) {
+      setError('Your thought must be shorter than 500 characters.')
+      return;
+    }
+
+    if (thought.content.length <= 3) {
+      setError('Your thought must be longer than 3 characters.')
+      return;
+    }
+
+    setError(false)
   }
 
   return (
@@ -35,9 +66,9 @@ function NewThoughtForm(props) {
         name='thought'
         aria-label="Post a thought"
         placeholder='An essay on why bananas are green...'
-        defaultValue={props.content}
-        onChange={(e) => formHandler(e.target, setThoughtForm)} />
-      <button type='submit'>Express</button>
+        onChange={(e) => formHandleChange(e.target)} />
+      {error && <p className='error' >{error}</p>}
+      <button disabled={error || thought.untouched} type='submit'>Express</button>
     </form>
   )
 }
