@@ -11,7 +11,7 @@ function ThoughtList(props) {
 
   function makeCards() {
     if (match) {
-      return props.thoughts.userThoughts.sort((a, b) => b.id - a.id).map(thought =>
+      return props.thoughts.userThoughts.map(thought =>
         <ThoughtCard key={thought.id} thought={thought} />
       )
     } else {
