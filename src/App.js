@@ -47,7 +47,7 @@ class App extends React.Component {
       userThoughts: this.state.userThoughts.filter(thought => thought.id !== thoughtId)
     })
 
-    if(this.state.allThoughts.find(thought => thought.id === thoughtId)) {
+    if (this.state.allThoughts.find(thought => thought.id === thoughtId)) {
       this.setState({
         newThoughtCount: this.state.newThoughtCount - 1
       })
@@ -55,16 +55,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (!localStorage.getItem('token')) {
-      getToken()
-    }
-
-    Promise.all([getAllThoughts(), getUserThoughts()])
-      .then(response => {
-        this.setState({
-          allThoughts: response[0],
-          userThoughts: response[1]
-        })
+    new Promise((resolve, reject) => {
+      if (!localStorage.getItem('token')) {
+        getToken().then(() =>  resolve())
+      } else {
+        resolve()
+      }
+    })
+      .then(() => {
+        Promise.all([getAllThoughts(), getUserThoughts()])
+          .then(response => {
+            this.setState({
+              allThoughts: response[0],
+              userThoughts: response[1]
+            })
+          })
       })
 
 

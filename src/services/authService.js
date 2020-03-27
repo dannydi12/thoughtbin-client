@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 
 export function getToken() {
-  fetch(`${config.API_URL}/token`, {
+  return fetch(`${config.API_URL}/token`, {
     method: 'POST'
   })
     .then(response => {
