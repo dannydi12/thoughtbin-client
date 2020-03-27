@@ -4,15 +4,6 @@ main {
   align-items: center;
 }
 
-.banner {
-  text-align: center;
-  color: #28ACFF;
-}
-
-.banner a {
-  text-decoration: none;
-}
-
 .call-to-action {
   text-align: center;
   background-color: #28acff;
@@ -41,9 +32,4 @@ main {
 .call-to-action button:hover {
   background-color: rgb(5, 9, 20);
   color: #fff;
-}
-
-.brainbox {
-  padding: 30px;
-  height: 200px;
 }

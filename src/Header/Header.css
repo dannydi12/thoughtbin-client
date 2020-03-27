@@ -1,0 +1,13 @@
+.banner {
+  text-align: center;
+  color: #28ACFF;
+}
+
+.banner a {
+  text-decoration: none;
+}
+
+.brainbox {
+  padding: 30px;
+  height: 200px;
+}
