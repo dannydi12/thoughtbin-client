@@ -14,8 +14,6 @@ class App extends React.Component {
     newThoughtCount: 0,
   }
 
-  ws = new WebSocket(config.WS_URL);
-
   addToThoughtList = (newThought) => {
     this.setState({
       userThoughts: [newThought, ...this.state.userThoughts]
@@ -48,11 +46,15 @@ class App extends React.Component {
       allThoughts: this.state.allThoughts.filter(thought => thought.id !== thoughtId),
       userThoughts: this.state.userThoughts.filter(thought => thought.id !== thoughtId)
     })
+
+    if(this.state.allThoughts.find(thought => thought.id === thoughtId)) {
+      this.setState({
+        newThoughtCount: this.state.newThoughtCount - 1
+      })
+    }
   }
 
   componentDidMount() {
-    console.log('rerendered!')
-
     if (!localStorage.getItem('token')) {
       getToken()
     }
@@ -65,9 +67,14 @@ class App extends React.Component {
         })
       })
 
-    this.ws.onmessage = (message) => {
+
+    const ws = new WebSocket(config.WS_URL);
+    ws.onmessage = (message) => {
       const incomingThought = JSON.parse(message.data);
-      this.addToAllThoughtsList(incomingThought)
+      this.addToAllThoughtsList(incomingThought);
+      this.setState({
+        newThoughtCount: this.state.newThoughtCount + 1
+      })
     }
   }
 
