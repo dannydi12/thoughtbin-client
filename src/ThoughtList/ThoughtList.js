@@ -1,37 +1,50 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from "react-router-dom";
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
+import { getThoughtById } from '../services/thoughtService';
 import NewThoughtForm from '../NewThoughtForm/NewThoughtForm';
 import './ThoughtList.css';
 
 function ThoughtList(props) {
+  const [thoughts, setThoughts] = useState(props.thoughts)
+  
+  const match = useRouteMatch('/thoughts') || ''
+  const singleThought = useRouteMatch('/thoughts/:thoughtId') || ''
 
-  const match = useRouteMatch('/thoughts')
-  let thoughtCards = makeCards();
-
-  function makeCards() {
-    if (match) {
-      return props.thoughts.userThoughts.map(thought =>
-        <ThoughtCard key={thought.id} thought={thought} />
-      )
-    } else {
-      return props.thoughts.allThoughts.map(thought =>
-        <ThoughtCard key={thought.id} thought={thought} />
-      )
-    }
-  }
+  const thoughtCards = thoughts.map(thought => (
+    <ThoughtCard key={thought.id} thought={thought} />
+  ));
 
   useEffect(() => {
-    if (match) {
+    if(singleThought.isExact) {
+      getThoughtById(singleThought.params.thoughtId)
+        .then(thought => {
+          setThoughts([thought])
+        })
+        .catch(err => {
+          setThoughts([])
+        })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!singleThought.isExact) {
+      setThoughts(props.thoughts)
+    }
+  }, [props.thoughts])
+
+  useEffect(() => {
+    if (match.isExact) {
       const createThoughtForm = document.getElementById(`create-new-thought`);
       createThoughtForm.focus();
     }
-  }, [match]);
+  }, [match.isExact]);
 
   return (
     <section className='thought-list'>
-      {match && <NewThoughtForm />}
+      {match.isExact && <NewThoughtForm />}
       {thoughtCards}
+      {thoughtCards.length === 0 && <p>Wow, such empty...</p>}
     </section>
   )
 }

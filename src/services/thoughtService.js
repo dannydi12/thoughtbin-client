@@ -19,6 +19,21 @@ export function getAllThoughts() {
     })
 }
 
+export function getThoughtById(thoughtId) {
+  return fetch(`${config.API_URL}/thoughts/${thoughtId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => { throw new Error(text) })
+      }
+      return response.json();
+    })
+}
+
 export function getUserThoughts() {
   const token = localStorage.getItem('token')
 

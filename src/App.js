@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import config from './config';
 import ThoughtContext from './contexts/ThoughtContext';
 import { getToken } from './services/authService';
@@ -132,7 +132,19 @@ class App extends React.Component {
               {this.props.location.pathname === '/thoughts' ? 'View others\' thoughts' : 'Express a thought'}
             </button>
           </section>
-          <ThoughtList thoughts={this.state} />
+
+          <Route exact path='/thoughts/:thoughtId'>
+            <ThoughtList thoughts={[]} />
+          </Route>
+
+          <Route exact path='/thoughts'>
+            <ThoughtList thoughts={this.state.userThoughts} />
+          </Route>
+
+          <Route exact path='/'>
+            <ThoughtList thoughts={this.state.allThoughts} />
+          </Route>
+
         </main>
       </ThoughtContext.Provider>
     );

@@ -10,7 +10,7 @@ import './ThoughtCard.css';
 
 function ThoughtCard(props) {
   const [isEditing, setIsEditing] = useState(false)
-  const match = useRouteMatch('/thoughts')
+  const match = useRouteMatch('/thoughts') || ''
 
   const thought = useContext(ThoughtContext);
 
@@ -29,8 +29,8 @@ function ThoughtCard(props) {
         : <>
           <p>{props.thought.content}</p>
           <div className='button-wrapper'>
-            {match && <EditButton clickFunction={() => setIsEditing(true)} />}
-            {match && <DeleteButton clickFunction={removeThought} />}
+            {match.isExact && <EditButton clickFunction={() => setIsEditing(true)} />}
+            {match.isExact && <DeleteButton clickFunction={removeThought} />}
             <ShareButton clickFunction={copyLink} />
           </div>
         </>
