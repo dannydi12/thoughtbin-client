@@ -25,3 +25,7 @@
   margin-right: auto;
   color: #28ACFF;
 }
+
+.thought-card p {
+  word-break: break-word;
+}

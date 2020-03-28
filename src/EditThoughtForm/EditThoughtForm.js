@@ -61,8 +61,8 @@ function EditThoughtForm(props) {
       return;
     }
 
-    if (thought.content.length > 500) {
-      setError('Your thought must be shorter than 500 characters.')
+    if (thought.content.length > 400) {
+      setError('Your thought must be shorter than 400 characters.')
       return;
     }
 
@@ -77,7 +77,7 @@ function EditThoughtForm(props) {
   return (
     <form onSubmit={submitForm} id={`thought-${props.thought.id}`} className='thought-form'>
       <textarea onChange={(e) => formHandleChange(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
-      {error && <p className='error'>{error}</p>}
+      <p className='error'>{error ? error : ' '}</p>
       <div className='edit-thought-button-wrapper'>
         <button onClick={props.cancelEdit} type='button'>Cancel</button>
         <button disabled={error || thought.untouched} type='submit'>Re-Express</button>

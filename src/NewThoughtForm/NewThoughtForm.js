@@ -47,8 +47,8 @@ function NewThoughtForm(props) {
       return;
     }
 
-    if (thought.content.length > 500) {
-      setError('Your thought must be shorter than 500 characters.')
+    if (thought.content.length > 400) {
+      setError('Your thought must be shorter than 400 characters.')
       return;
     }
 
@@ -67,7 +67,7 @@ function NewThoughtForm(props) {
         aria-label="Post a thought"
         placeholder='An essay on why bananas are green...'
         onChange={(e) => formHandleChange(e.target)} />
-      {error && <p className='error' >{error}</p>}
+      <p className='error'>{error ? error : ' '}</p>
       <button disabled={error || thought.untouched} type='submit'>Express</button>
     </form>
   )

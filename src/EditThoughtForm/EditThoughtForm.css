@@ -7,3 +7,7 @@
 .edit-thought-button-wrapper button{
   margin-left: 0 !important;
 }
+
+.error {
+  height: 20px;
+}
