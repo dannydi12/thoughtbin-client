@@ -7,7 +7,7 @@ import './ThoughtList.css';
 
 function ThoughtList(props) {
   const [thoughts, setThoughts] = useState(props.thoughts)
-  
+
   const match = useRouteMatch('/thoughts') || ''
   const singleThought = useRouteMatch('/thoughts/:thoughtId') || ''
 

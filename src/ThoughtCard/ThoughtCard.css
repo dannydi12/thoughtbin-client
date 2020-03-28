@@ -18,3 +18,10 @@
   box-shadow: none;
   box-sizing: border-box;
 }
+
+.copied-notif {
+  margin: 0;
+  margin-top: 4px;
+  margin-right: auto;
+  color: #28ACFF;
+}
