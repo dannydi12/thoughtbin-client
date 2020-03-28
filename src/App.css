@@ -33,3 +33,14 @@ main {
   background-color: rgb(5, 9, 20);
   color: #fff;
 }
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  color: #28acff;
+  padding-top: 20px;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
+import InfiniteScroll from "react-infinite-scroll-component";
 import config from './config';
 import ThoughtContext from './contexts/ThoughtContext';
 import { getToken } from './services/authService';
@@ -53,6 +54,24 @@ class App extends React.Component {
         newThoughtCount: this.state.newThoughtCount - 1
       })
     }
+  }
+
+  getMoreThoughts = () => {
+    getAllThoughts(this.state.allThoughts.length)
+      .then(newThoughts => {
+        this.setState({
+          allThoughts: [...this.state.allThoughts, ...newThoughts]
+        })
+      })
+  }
+
+  getMoreUserThoughts = () => {
+    getUserThoughts(this.state.userThoughts.length)
+      .then(newThoughts => {
+        this.setState({
+          userThoughts: [...this.state.userThoughts, ...newThoughts]
+        })
+      })
   }
 
   componentDidMount() {
@@ -138,11 +157,23 @@ class App extends React.Component {
           </Route>
 
           <Route exact path='/thoughts'>
-            <ThoughtList thoughts={this.state.userThoughts} />
+            <InfiniteScroll
+              dataLength={this.state.userThoughts.length}
+              next={this.getMoreUserThoughts}
+              hasMore={true}
+              loader={this.state.userThoughts.length > 19 ? <p className='loading'>Loading...</p> : <></>}>
+              <ThoughtList thoughts={this.state.userThoughts} />
+            </InfiniteScroll>
           </Route>
 
           <Route exact path='/'>
-            <ThoughtList thoughts={this.state.allThoughts} />
+            <InfiniteScroll
+              dataLength={this.state.allThoughts.length}
+              next={this.getMoreThoughts}
+              hasMore={true}
+              loader={this.state.allThoughts.length > 19 ? <p className='loading'>Loading...</p> : <></>}>
+              <ThoughtList thoughts={this.state.allThoughts} />
+            </InfiniteScroll>
           </Route>
 
         </main>

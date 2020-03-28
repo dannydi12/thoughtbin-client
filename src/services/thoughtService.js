@@ -1,8 +1,8 @@
 import config from '../config';
 import { decodeToken } from '../services/authService';
 
-export function getAllThoughts() {
-  return fetch(`${config.API_URL}/thoughts`, {
+export function getAllThoughts(offset) {
+  return fetch(`${config.API_URL}/thoughts${offset ? `?offset=${offset}` : ``}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -34,10 +34,10 @@ export function getThoughtById(thoughtId) {
     })
 }
 
-export function getUserThoughts() {
+export function getUserThoughts(offset) {
   const token = localStorage.getItem('token')
 
-  return fetch(`${config.API_URL}/thoughts?userId=${decodeToken(token).userId}`, {
+  return fetch(`${config.API_URL}/thoughts?userId=${decodeToken(token).userId}${offset ? `&offset=${offset}` : ``}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`
