@@ -22,7 +22,11 @@ function NewThoughtForm(props) {
     })
       .then(newThought => {
         thoughtContext.addToThoughtList(newThought);
-        e.target.thought.value = ''
+        e.target.thought.value = '';
+        setThoughtForm({
+          untouched: true,
+          content: null
+        })
       })
       .catch(error => {
         setError(error.message)

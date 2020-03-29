@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { updateThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
 import ThoughtContext from '../contexts/ThoughtContext';
-// import { formHandleChange } from '../Utils';
 import './EditThoughtForm.css';
 
 function EditThoughtForm(props) {
