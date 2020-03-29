@@ -24,7 +24,8 @@ function ThoughtCard(props) {
 
   const copyLink = () => {
     const text = document.createElement('textarea');
-    text.value = `https://thoughtbin.tk/thoughts/${props.thought.id}`;
+    console.log(window.location.href)
+    text.value = `${window.location.href}${match ? '/' : 'thoughts/'}${props.thought.id}`;
     text.setAttribute('readonly', '');
     text.style.position = 'absolute';
     text.style.left = '-9999px';
