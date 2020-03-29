@@ -9,7 +9,7 @@
 
 .thought-form textarea {
   width: 100%;
-  min-height: 230px !important;
+  min-height: 230px;
   resize: none;
   border: none;
   font-size: 16px;
@@ -51,4 +51,8 @@
   height: 20px;
   color: #4e96c2;
   text-align: center;
+}
+
+#create-new-thought {
+  min-height: 100px !important
 }
