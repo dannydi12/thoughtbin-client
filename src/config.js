@@ -1,4 +1,4 @@
 export default {
-  API_URL: "http://localhost:8000",
-  WS_URL: "ws://localhost:9000"
+  API_URL: "https://guarded-dawn-00276.herokuapp.com",
+  WS_URL: "ws://guarded-dawn-00276.herokuapp.com"
 }

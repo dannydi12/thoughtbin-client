@@ -60,7 +60,7 @@ class App extends React.Component {
     getAllThoughts(this.state.allThoughts.length)
       .then(newThoughts => {
         this.setState({
-          allThoughts: [...this.state.allThoughts, ...newThoughts]
+          allThoughts: [...this.state.allThoughts, ...newThoughts].filter((thought, index, self) => self.indexOf(thought) === index)
         })
       })
   }
@@ -69,7 +69,7 @@ class App extends React.Component {
     getUserThoughts(this.state.userThoughts.length)
       .then(newThoughts => {
         this.setState({
-          userThoughts: [...this.state.userThoughts, ...newThoughts]
+          userThoughts: [...this.state.userThoughts, ...newThoughts].filter((thought, index, self) => self.indexOf(thought) === index)
         })
       })
   }
