@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from "react-router-dom";
+import PropTypes from 'prop-types';
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
 import { getThoughtById } from '../services/thoughtService';
 import NewThoughtForm from '../NewThoughtForm/NewThoughtForm';
@@ -16,7 +17,7 @@ function ThoughtList(props) {
   ));
 
   useEffect(() => {
-    if(singleThought.isExact) {
+    if (singleThought.isExact) {
       getThoughtById(singleThought.params.thoughtId)
         .then(thought => {
           setThoughts([thought])
@@ -46,6 +47,16 @@ function ThoughtList(props) {
       {thoughtCards}
       {thoughtCards.length === 0 && <p>Wow, such empty...</p>}
     </section>
+  )
+}
+
+ThoughtList.propTypes = {
+  thoughts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      userId: PropTypes.string,
+      content: PropTypes.string.isRequired
+    }).isRequired
   )
 }
 
