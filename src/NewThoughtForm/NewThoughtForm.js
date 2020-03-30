@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import ThoughtContext from '../contexts/ThoughtContext';
 import { createNewThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
 import './NewThoughtForm.css';
 
-function NewThoughtForm(props) {
+function NewThoughtForm() {
   const [error, setError] = useState(null)
   const [thought, setThoughtForm] = useState({
     untouched: true,
@@ -75,6 +76,14 @@ function NewThoughtForm(props) {
       <button disabled={error || thought.untouched} type='submit'>Express</button>
     </form>
   )
+}
+
+NewThoughtForm.propTypes = {
+  thought: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.string,
+    content: PropTypes.string.isRequired
+  })
 }
 
 export default NewThoughtForm;

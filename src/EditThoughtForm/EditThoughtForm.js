@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { updateThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
 import ThoughtContext from '../contexts/ThoughtContext';
@@ -83,6 +84,15 @@ function EditThoughtForm(props) {
       </div>
     </form>
   )
+}
+
+EditThoughtForm.propTypes = {
+  thought: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.string,
+    content: PropTypes.string.isRequired
+  }),
+  cancelEdit: PropTypes.func.isRequired
 }
 
 export default EditThoughtForm;
