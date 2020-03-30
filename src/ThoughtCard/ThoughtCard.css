@@ -5,10 +5,14 @@
   max-width: 400px;
   padding: 0px 20px 10px 20px;
   width: 100%;
-  transition: height 2s;
+  transition: height 2s, box-shadow 1s;
   animation: thought-exist;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+}
+
+.thought-card:hover {
+  box-shadow: 3px 3px 20px rgb(179, 178, 178);
 }
 
 .thought-card .button-wrapper {
