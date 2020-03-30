@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './DeleteButton.css';
 
 function DeleteButton(props) {
@@ -12,6 +13,10 @@ function DeleteButton(props) {
       <span className='hidden'>Delete</span>
     </button>
   )
+}
+
+DeleteButton.propTypes = {
+  clickFunction: PropTypes.func.isRequired
 }
 
 export default DeleteButton;

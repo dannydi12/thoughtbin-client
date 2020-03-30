@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './EditButton.css';
 
 function EditButton(props) {
@@ -13,6 +14,10 @@ function EditButton(props) {
       <span className='hidden'>Edit</span>
     </button>
   )
+}
+
+EditButton.propTypes = {
+  clickFunction: PropTypes.func.isRequired
 }
 
 export default EditButton;

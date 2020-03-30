@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ShareButton.css';
 
 function ShareButton(props) {
@@ -15,6 +16,10 @@ function ShareButton(props) {
       <span className='hidden'>Share</span>
     </button>
   )
+}
+
+ShareButton.propTypes = {
+  clickFunction: PropTypes.func.isRequired
 }
 
 export default ShareButton;
