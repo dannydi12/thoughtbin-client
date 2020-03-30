@@ -1,12 +1,23 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import routeData from 'react-router';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-it('does nothing', () => {
-  
-})
+it('renders without crashing', () => {
+  const mockLocation = {
+    pathname: '/thoughts',
+    hash: '',
+    search: '',
+    state: ''
+  }
+
+  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation)
+
+  const div = document.createElement('div');
+  ReactDOM.render(
+    <Router>
+      <App />
+    </Router>, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
