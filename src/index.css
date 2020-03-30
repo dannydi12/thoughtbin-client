@@ -29,10 +29,6 @@ h2 {
   font-size: 30px;
 }
 
-p {
-  /* font-family: 'Helvetica Neue'; */
-}
-
 a:visited {
   color: #28acff
 }
@@ -44,18 +40,6 @@ a {
 button:focus {
   outline: none;
 }
-
-/* 
-button {
-  background-color: #000;
-  color: #fff;
-  padding: 10px;
-  box-shadow: 1px 1px 10px rgb(197, 197, 197);
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  float: right;
-} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
