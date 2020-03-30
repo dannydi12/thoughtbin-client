@@ -6,6 +6,7 @@
   height: 30px;
   width: 30px;
   fill: #28ACFF;
+  transition: fill 0.5s;
 }
 
 .share-button svg:hover {

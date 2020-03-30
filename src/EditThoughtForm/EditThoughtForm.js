@@ -79,7 +79,7 @@ function EditThoughtForm(props) {
       <textarea onChange={(e) => formHandleChange(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
       <p className='error'>{error ? error : ' '}</p>
       <div className='edit-thought-button-wrapper'>
-        <button onClick={props.cancelEdit} type='button'>Cancel</button>
+        <button onClick={props.cancelEdit} type='button' className='cancel'>Cancel</button>
         <button disabled={error || thought.untouched} type='submit'>Re-Express</button>
       </div>
     </form>

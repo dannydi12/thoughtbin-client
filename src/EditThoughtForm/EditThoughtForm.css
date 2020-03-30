@@ -11,3 +11,8 @@
 .error {
   height: 20px;
 }
+
+.cancel:hover {
+  background-color: #FF3366 !important;
+  color: #fff !important;
+}
