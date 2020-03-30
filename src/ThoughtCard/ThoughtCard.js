@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouteMatch } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { deleteThought } from '../services/thoughtService';
 import ThoughtContext from '../contexts/ThoughtContext';
 import ShareButton from '../buttons/ShareButton/ShareButton';
@@ -58,6 +59,14 @@ function ThoughtCard(props) {
       }
     </div>
   )
+}
+
+ThoughtCard.propTypes = {
+  thought: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    userId: PropTypes.string,
+    content: PropTypes.string.isRequired
+  })
 }
 
 export default ThoughtCard;
