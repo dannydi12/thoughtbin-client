@@ -16,3 +16,8 @@
   background-color: #FF3366 !important;
   color: #fff !important;
 }
+
+.edit-thought-form {
+  animation-name: exist;
+  animation-duration: 2s;
+}

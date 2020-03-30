@@ -6,8 +6,9 @@ import ThoughtContext from './contexts/ThoughtContext';
 import { getToken } from './services/authService';
 import { getAllThoughts, getUserThoughts } from './services/thoughtService';
 import ThoughtList from './ThoughtList/ThoughtList';
-import './App.css';
 import Header from './Header/Header';
+import './App.css';
+import './animations.css';
 
 class App extends React.Component {
   state = {

@@ -5,6 +5,10 @@
   max-width: 400px;
   padding: 0px 20px 10px 20px;
   width: 100%;
+  transition: height 2s;
+  animation: thought-exist;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .thought-card .button-wrapper {
@@ -24,6 +28,9 @@
   margin-top: 4px;
   margin-right: auto;
   color: #28ACFF;
+  animation-name: copied;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 }
 
 .thought-card p {

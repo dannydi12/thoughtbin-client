@@ -75,7 +75,7 @@ function EditThoughtForm(props) {
   }
 
   return (
-    <form onSubmit={submitForm} id={`thought-${props.thought.id}`} className='thought-form'>
+    <form onSubmit={submitForm} id={`thought-${props.thought.id}`} className='thought-form edit-thought-form'>
       <textarea onChange={(e) => formHandleChange(e.target, setThoughtForm)} name='thought' aria-label="Edit your thought" defaultValue={props.thought.content}></textarea>
       <p className='error'>{error ? error : ' '}</p>
       <div className='edit-thought-button-wrapper'>

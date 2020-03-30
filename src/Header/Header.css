@@ -1,6 +1,11 @@
 .banner {
   text-align: center;
   color: #28ACFF;
+  opacity: 0%;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  /* animation-delay: 1s; */
 }
 
 .banner a {
@@ -10,4 +15,9 @@
 .brainbox {
   padding: 30px;
   height: 200px;
+  opacity: 0%;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  /* animation-delay: 1s; */
 }
