@@ -75,6 +75,17 @@ class App extends React.Component {
       })
   }
 
+  refreshSocket = () => {
+    const ws = new WebSocket(config.WS_URL);
+    ws.onmessage = (message) => {
+      const incomingThought = JSON.parse(message.data);
+      this.addToAllThoughtsList(incomingThought);
+      this.setState({
+        newThoughtCount: this.state.newThoughtCount + 1
+      })
+    }
+  }
+
   componentDidMount() {
     new Promise((resolve, reject) => {
       if (!localStorage.getItem('token')) {
@@ -93,7 +104,6 @@ class App extends React.Component {
           })
       })
 
-
     const ws = new WebSocket(config.WS_URL);
     ws.onmessage = (message) => {
       const incomingThought = JSON.parse(message.data);
@@ -101,6 +111,9 @@ class App extends React.Component {
       this.setState({
         newThoughtCount: this.state.newThoughtCount + 1
       })
+    }
+    ws.onclose = (e) => {
+      this.refreshSocket()
     }
   }
 
