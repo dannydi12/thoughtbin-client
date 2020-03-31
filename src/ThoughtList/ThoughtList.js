@@ -42,7 +42,7 @@ function ThoughtList(props) {
   }, [match.isExact]);
 
   return (
-    <section className='thought-list'>
+    <section className={`thought-list ${!match ? 'all-thoughts' : ''}`}>
       {match.isExact && <NewThoughtForm />}
       {thoughtCards}
       {thoughtCards.length === 0 && <p>Wow, such empty...</p>}

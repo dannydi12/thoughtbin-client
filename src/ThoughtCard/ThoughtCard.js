@@ -25,7 +25,6 @@ function ThoughtCard(props) {
 
   const copyLink = () => {
     const text = document.createElement('textarea');
-    console.log(window.location.href)
     text.value = `${window.location.href}${match ? '/' : 'thoughts/'}${props.thought.id}`;
     text.setAttribute('readonly', '');
     text.style.position = 'absolute';

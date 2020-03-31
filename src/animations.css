@@ -1,36 +1,86 @@
 @keyframes fadeIn {
   0% {
-    opacity: 0%;
+    opacity: 0;
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 @keyframes exist {
   0% {
     height: 0;
-    opacity: 0%;
+    opacity: 0;
   }
   20% {
     height: 361px;
-    opacity: 0%;
+    opacity: 0;
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
-@keyframes thought-exist {
+@-webkit-keyframes exist {
   0% {
-    opacity: 0%;
+    height: 0;
+    opacity: 0;
+  }
+  20% {
+    height: 361px;
+    opacity: 0;
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes thoughtExist {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes thoughtExist {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 @keyframes copied {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes copied {
   0% {
     opacity: 0%;
   }

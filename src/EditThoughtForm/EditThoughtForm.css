@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-.edit-thought-button-wrapper button{
+.edit-thought-button-wrapper button {
   margin-left: 0 !important;
 }
 
@@ -20,4 +20,6 @@
 .edit-thought-form {
   animation-name: exist;
   animation-duration: 2s;
+  -webkit-animation-name: exist;
+  -webkit-animation-duration: 2s;
 }

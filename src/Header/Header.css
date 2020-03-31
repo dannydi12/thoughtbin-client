@@ -1,10 +1,11 @@
 .banner {
   text-align: center;
   color: #28ACFF;
-  opacity: 0%;
+  
   animation-name: fadeIn;
-  animation-fill-mode: forwards;
   animation-duration: 2s;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
 }
 
 .banner a {
@@ -16,6 +17,8 @@
   height: 200px;
   opacity: 0%;
   animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
   animation-fill-mode: forwards;
   animation-duration: 2s;
+  -webkit-animation-duration: 2s;
 }
