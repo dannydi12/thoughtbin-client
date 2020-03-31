@@ -152,6 +152,9 @@ class App extends React.Component {
           </Route>
 
         </main>
+        <footer className='main-footer'>
+          <p>Powered by <span role="img" className='thought-bubble' aria-label="thoughts">&#x1F4AD;</span></p>
+        </footer>
       </ThoughtContext.Provider>
     );
   }

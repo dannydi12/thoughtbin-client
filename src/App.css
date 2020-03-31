@@ -44,3 +44,20 @@ main {
   color: #28acff;
   padding-top: 20px;
 }
+
+.main-footer {
+  width: 100%;
+  bottom: 0;
+  box-sizing: border-box;
+  margin-top: 500px;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #28acff;
+}
+
+.thought-bubble {
+  margin-left: 3px;
+}
