@@ -35,9 +35,11 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.  
 
-### Configuration
+## Configuration
 
-Make sure to go to `[thoughtbin-folder-name]/src/config.js` and enter the proper URLs for the Express and Websocket server. The backend repository can be found [here](https://github.com/dannydi12/thoughtbin-server).
+Make sure to go to `[thoughtbin-folder-name]/src/config.js` and enter the proper URLs for the Express and Websocket server. 
+
+### **The backend repository can be found [here](https://github.com/dannydi12/thoughtbin-server).**
 
 ## Screenshots
 Landing Page:
