@@ -67,6 +67,7 @@ Personal Thoughts Page:
 
 * Node
 * PostgreSQL
+* Knex
 * JSON Web Token
 * Websockets
 * Express
