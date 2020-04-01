@@ -13,6 +13,8 @@ ThoughtBin's basic principles:
 * Access to information should not be gated by identification
 * Every internet user should have the ability to *anonymously* share/create content; *pseudonymity* is not acceptable.
 
+By design, ThoughtBin only stores a single token in Local Storage to authenticate and fetch your personal thoughts. No trackers, no cookies, nothing else.
+
 ## ThoughtBot
 
 The live demo includes an automated posting bot that scrapes r/ShowerThoughts to feign user interaction and show off the WebSocket functionality + infinite scroll features. Here is the repository for [ThoughtBot](https://github.com/dannydi12/thoughtbin-bot).
