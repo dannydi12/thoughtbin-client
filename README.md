@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ThoughtBin
 
-## Available Scripts
+ThoughtBin allows users to anonymously share and create content on a simple and frictionless micro-platform. Think of it as a privacy-centric Twitter with a hint of 4Chan. A live demo can be found at [https://thoughtbin.imdan.io/](https://thoughtbin.imdan.io/)
 
-In the project directory, you can run:
+## Motivation
 
-### `yarn start`
+I wanted a social media network where I didn't have to worry about followers, likes, or reputation. I felt there was a need to create something that respected the user and fostered a safe space for self-expression. Soon after, the idea of ThoughtBin was born. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ThoughtBin's basic principles:
 
-The page will reload if you make edits.<br />
+* Disseminating information shouldn’t be difficult
+* Publishing new information should not require you to surrender your identity
+* Access to information should not be gated by identification
+* Every internet user should have the ability to *anonymously* share/create content; *pseudonymity* is not acceptable.
+
+## ThoughtBot
+
+The live demo includes an automated posting bot that scrapes r/ShowerThoughts to feign user interaction and show off the WebSocket functionality + infinite scroll features. Here is the repository for [ThoughtBot](https://github.com/dannydi12/thoughtbin-bot).
+
+## Installation
+
+### `npm install`
+
+Installs all the required dependencies. Run this before anything else.
+
+### `npm start`
+
+Runs the app in the development mode  
+Open  [http://localhost:3000](http://localhost:3000/)  to view it in the browser.
+
+The page will reload if you make edits.  
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.  
 
-### `yarn build`
+### Configuration
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Make sure to go to `[thoughtbin-folder-name]/src/config.js` and enter the proper URLs for the Express and Websocket server. The backend repository can be found [here](https://github.com/dannydi12/thoughtbin-server).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Screenshots
+Landing Page:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![landing page](screens/main-page.png)
 
-### `yarn eject`
+Personal Thoughts Page:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![user page](screens/user-page.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Front-end:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* React
+* HTML5
+* CSS3
+* Javascript
+* JSON Web Token
+* Websockets
+* Jest
+* Deployed with Zeit
 
-## Learn More
+#### Back-end:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Node
+* PostgreSQL
+* JSON Web Token
+* Websockets
+* Express
+* Mocha, and Chai
+* Deployed with Heroku
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo
 
-### Code Splitting
+- [Live Demo](https://thoughtbin.imdan.io/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Authors
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* **Daniel DiVenere** - Fullstack Development, Deployment, etc - [https://imdan.io/](https://imdan.io/)
