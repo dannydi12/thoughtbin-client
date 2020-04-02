@@ -17,6 +17,7 @@ function ThoughtCard(props) {
   const thought = useContext(ThoughtContext);
 
   useEffect(() => {
+    // 'Copied' notification to let the user know the link has been copied to their clipboard
     const notificationTimeout = setTimeout(() => {
       setShowCopied(false)
     }, 3000)
@@ -24,12 +25,16 @@ function ThoughtCard(props) {
   }, [showCopied])
 
   const copyLink = () => {
+    // Create a temporary textarea to copy link to clipboard
     const text = document.createElement('textarea');
     text.value = `${window.location.href}${match ? '/' : 'thoughts/'}${props.thought.id}`;
+
+    // Set it far away so the user doesn't see a flash
     text.setAttribute('readonly', '');
     text.style.position = 'absolute';
     text.style.left = '-9999px';
 
+    // This part should make sense on its own... I hope...
     document.body.appendChild(text);
     text.select();
     document.execCommand('copy');

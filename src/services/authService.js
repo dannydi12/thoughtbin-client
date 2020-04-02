@@ -12,6 +12,7 @@ export function getToken() {
       return response.json();
     })
     .then(token => {
+      // Add the token to local storage to be used for subsequent HTTP requests
       localStorage.setItem('token', token.token)
     })
     .catch(err => {

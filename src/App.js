@@ -77,6 +77,7 @@ class App extends React.Component {
 
   refreshSocket = () => {
     const ws = new WebSocket(config.WS_URL);
+
     ws.onmessage = (message) => {
       const incomingThought = JSON.parse(message.data);
       this.addToAllThoughtsList(incomingThought);
@@ -87,6 +88,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // If the auth token isn't in local storage, fetch one and then fetch thoughts, etc
     new Promise((resolve, reject) => {
       if (!localStorage.getItem('token')) {
         getToken().then(() => resolve())
@@ -113,6 +115,7 @@ class App extends React.Component {
       })
     }
     ws.onclose = (e) => {
+      // Heroku keeps closing the socket after 55 seconds *sigh*
       this.refreshSocket()
     }
   }

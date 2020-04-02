@@ -18,12 +18,15 @@ function EditThoughtForm(props) {
   useEffect(() => {
     const textarea = document.getElementById(`thought-${props.thought.id}`).elements.thought;
 
+    // On render, set cursor inside this form
     textarea.focus();
     textarea.selectionStart = textarea.value.length
   }, [props.thought.id]);
 
   const submitForm = (e) => {
     e.preventDefault()
+
+    // Send PATCH request, update state, then close the form
     updateThought({
       id: props.thought.id,
       userId: decodeToken().userId,
@@ -43,6 +46,7 @@ function EditThoughtForm(props) {
   }, [thought.content])
 
   const formHandleChange = (thoughtEvent) => {
+    // Adapts the height of the form based on length of input
     thoughtEvent.style.height = 'inherit';
     thoughtEvent.style.height = thoughtEvent.scrollHeight + 'px';
 

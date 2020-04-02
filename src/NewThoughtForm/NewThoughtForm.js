@@ -17,6 +17,8 @@ function NewThoughtForm() {
   const submitForm = (e) => {
     e.preventDefault()
     e.persist()
+
+    // Send POST request, add new thought to state, and clear the form
     createNewThought({
       userId: decodeToken().userId,
       content: thought.content
@@ -35,6 +37,7 @@ function NewThoughtForm() {
   }
 
   const formHandleChange = (thoughtEvent) => {
+    // Adapts the height of the form based on length of input
     thoughtEvent.style.height = 'inherit';
     thoughtEvent.style.height = thoughtEvent.scrollHeight + 'px';
 
