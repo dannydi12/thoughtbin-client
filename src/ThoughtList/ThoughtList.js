@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ThoughtCard from '../ThoughtCard/ThoughtCard';
 import { getThoughtById } from '../services/thoughtService';
@@ -7,36 +7,36 @@ import NewThoughtForm from '../NewThoughtForm/NewThoughtForm';
 import './ThoughtList.css';
 
 function ThoughtList(props) {
-  const [thoughts, setThoughts] = useState(props.thoughts)
+  const [thoughts, setThoughts] = useState(props.thoughts);
 
-  const match = useRouteMatch('/thoughts') || ''
-  const singleThought = useRouteMatch('/thoughts/:thoughtId') || ''
+  const match = useRouteMatch('/thoughts') || '';
+  const singleThought = useRouteMatch('/thoughts/:thoughtId') || '';
 
-  const thoughtCards = thoughts.map(thought => (
+  const thoughtCards = thoughts.map((thought) => (
     <ThoughtCard key={thought.id} thought={thought} />
   ));
 
   useEffect(() => {
     if (singleThought.isExact) {
       getThoughtById(singleThought.params.thoughtId)
-        .then(thought => {
-          setThoughts([thought])
+        .then((thought) => {
+          setThoughts([thought]);
         })
-        .catch(err => {
-          setThoughts([])
-        })
+        .catch(() => {
+          setThoughts([]);
+        });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (!singleThought.isExact) {
-      setThoughts(props.thoughts)
+      setThoughts(props.thoughts);
     }
-  }, [props.thoughts])
+  }, [props.thoughts]);
 
   useEffect(() => {
     if (match.isExact) {
-      const createThoughtForm = document.getElementById(`create-new-thought`);
+      const createThoughtForm = document.getElementById('create-new-thought');
       createThoughtForm.focus();
     }
   }, [match.isExact]);
@@ -47,7 +47,7 @@ function ThoughtList(props) {
       {thoughtCards}
       {thoughtCards.length === 0 && <p>Wow, such empty...</p>}
     </section>
-  )
+  );
 }
 
 ThoughtList.propTypes = {
@@ -55,9 +55,9 @@ ThoughtList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       userId: PropTypes.string,
-      content: PropTypes.string.isRequired
-    }).isRequired
-  )
-}
+      content: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 
 export default ThoughtList;

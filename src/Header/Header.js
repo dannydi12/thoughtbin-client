@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'
+import './Header.css';
 
 function Header() {
   return (
     <>
-      <header className='banner'>
-        <h1><Link to='/'>ThoughtBin</Link></h1>
+      <header className="banner">
+        <h1><Link to="/">ThoughtBin</Link></h1>
         <p>A place for your thoughts.</p>
       </header>
-      <svg className='brainbox' viewBox="-2 0 480 480" xmlns="http://www.w3.org/2000/svg">
+      <svg className="brainbox" viewBox="-2 0 480 480" xmlns="http://www.w3.org/2000/svg">
         <path d="m325.65625 80 16 24v40l-24 24v16l-32 8-8 24h-24l-16-16v-176l16-16h24l8 24h24l16 16zm0 0" fill="#8fceec67" />
         <path d="m189.65625 32 8-24h24l16 16v176l-16 16h-24l-8-24-32-8v-16l-24-24v-40l16-24v-32l16-16zm0 0" fill="#8fceec67" />
         <g fill="#0091EB">

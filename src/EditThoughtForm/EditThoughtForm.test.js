@@ -9,14 +9,15 @@ beforeAll(() => {
   const div = document.createElement('div');
   window.domNode = div;
   document.body.appendChild(div);
-})
+});
 
 it('renders without crashing', () => {
   const thought = {
     id: 777,
     userId: '443c043a-b026-4a96-8ca9-903f795c47c1',
-    content: 'Orthodoxy means not thinking--not needing to think. Orthodoxy is unconsciousness.'
-  }
+    content: 'Orthodoxy means not thinking--not needing to think. Orthodoxy is unconsciousness.',
+  };
 
-  const wrapper = shallow(<EditThoughtForm thought={thought} cancelEdit={() => {}}/>,{ attachTo: window.domNode });
+  shallow(<EditThoughtForm thought={thought} cancelEdit={() => { }} />,
+    { attachTo: window.domNode });
 });

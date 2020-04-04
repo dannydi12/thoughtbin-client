@@ -8,16 +8,16 @@ it('renders without crashing', () => {
     pathname: '/thoughts',
     hash: '',
     search: '',
-    state: ''
-  }
-  
-  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation)
+    state: '',
+  };
+
+  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation);
 
   const thought = {
     id: 777,
     userId: '443c043a-b026-4a96-8ca9-903f795c47c1',
-    content: 'Orthodoxy means not thinking--not needing to think. Orthodoxy is unconsciousness.'
-  }
+    content: 'Orthodoxy means not thinking--not needing to think. Orthodoxy is unconsciousness.',
+  };
 
   const div = document.createElement('div');
   ReactDOM.render(<ThoughtCard thought={thought} />, div);

@@ -9,15 +9,16 @@ it('renders without crashing', () => {
     pathname: '/thoughts',
     hash: '',
     search: '',
-    state: ''
-  }
+    state: '',
+  };
 
-  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation)
+  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation);
 
   const div = document.createElement('div');
   ReactDOM.render(
     <Router>
       <App />
-    </Router>, div);
+    </Router>, div,
+  );
   ReactDOM.unmountComponentAtNode(div);
 });

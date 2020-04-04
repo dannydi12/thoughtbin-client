@@ -31,15 +31,14 @@ const thoughtsFixture = [
 ];
 
 it('renders without crashing', () => {
-
   const mockLocation = {
     pathname: '/thoughts',
     hash: '',
     search: '',
-    state: ''
-  }
+    state: '',
+  };
 
-  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation)
+  jest.spyOn(routeData, 'useRouteMatch').mockReturnValue(mockLocation);
 
   const div = document.createElement('div');
   ReactDOM.render(<ThoughtList thoughts={thoughtsFixture} />, div);

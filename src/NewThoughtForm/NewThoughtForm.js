@@ -6,49 +6,51 @@ import { decodeToken } from '../services/authService';
 import './NewThoughtForm.css';
 
 function NewThoughtForm() {
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
   const [thought, setThoughtForm] = useState({
     untouched: true,
-    content: null
-  })
+    content: null,
+  });
 
-  const thoughtContext = useContext(ThoughtContext)
+  const thoughtContext = useContext(ThoughtContext);
 
   const submitForm = (e) => {
-    e.preventDefault()
-    e.persist()
+    e.preventDefault();
+    e.persist();
 
     // Send POST request, add new thought to state, and clear the form
     createNewThought({
       userId: decodeToken().userId,
-      content: thought.content
+      content: thought.content,
     })
-      .then(newThought => {
+      .then((newThought) => {
         thoughtContext.addToThoughtList(newThought);
         e.target.thought.value = '';
         setThoughtForm({
           untouched: true,
-          content: null
-        })
+          content: null,
+        });
       })
-      .catch(error => {
-        setError(error.message)
-      })
-  }
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   const formHandleChange = (thoughtEvent) => {
     // Adapts the height of the form based on length of input
+    // eslint-disable-next-line no-param-reassign
     thoughtEvent.style.height = 'inherit';
-    thoughtEvent.style.height = thoughtEvent.scrollHeight + 'px';
+    // eslint-disable-next-line no-param-reassign
+    thoughtEvent.style.height = `${thoughtEvent.scrollHeight}px`;
 
     setThoughtForm({
       content: thoughtEvent.value,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    validateContent()
-  }, [thought.content])
+    validateContent();
+  }, [thought.content]);
 
   const validateContent = () => {
     if (thought.untouched) {
@@ -56,37 +58,39 @@ function NewThoughtForm() {
     }
 
     if (thought.content.length > 400) {
-      setError('Your thought must be shorter than 400 characters.')
+      setError('Your thought must be shorter than 400 characters.');
       return;
     }
 
     if (thought.content.length <= 3) {
-      setError('Your thought must be longer than 3 characters.')
+      setError('Your thought must be longer than 3 characters.');
       return;
     }
 
-    setError(false)
-  }
+    setError(false);
+  };
 
   return (
-    <form onSubmit={submitForm} className='thought-form'>
-      <textarea id='create-new-thought'
-        name='thought'
+    <form onSubmit={submitForm} className="thought-form">
+      <textarea
+        id="create-new-thought"
+        name="thought"
         aria-label="Post a thought"
-        placeholder='An essay on why bananas are green...'
-        onChange={(e) => formHandleChange(e.target)} />
-      <p className='error'>{error ? error : ' '}</p>
-      <button disabled={error || thought.untouched} type='submit'>Express</button>
+        placeholder="An essay on why bananas are green..."
+        onChange={(e) => formHandleChange(e.target)}
+      />
+      <p className="error">{error || ' '}</p>
+      <button disabled={error || thought.untouched} type="submit">Express</button>
     </form>
-  )
+  );
 }
 
 NewThoughtForm.propTypes = {
   thought: PropTypes.shape({
     id: PropTypes.number.isRequired,
     userId: PropTypes.string,
-    content: PropTypes.string.isRequired
-  })
-}
+    content: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default NewThoughtForm;

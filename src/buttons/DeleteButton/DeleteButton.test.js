@@ -4,6 +4,6 @@ import DeleteButton from './DeleteButton';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<DeleteButton clickFunction={() => {}}/>, div);
+  ReactDOM.render(<DeleteButton clickFunction={() => {}} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
