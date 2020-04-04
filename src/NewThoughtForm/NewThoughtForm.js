@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
 import ThoughtContext from '../contexts/ThoughtContext';
 import { createNewThought } from '../services/thoughtService';
 import { decodeToken } from '../services/authService';
@@ -84,13 +83,5 @@ function NewThoughtForm() {
     </form>
   );
 }
-
-NewThoughtForm.propTypes = {
-  thought: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    userId: PropTypes.string,
-    content: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default NewThoughtForm;
