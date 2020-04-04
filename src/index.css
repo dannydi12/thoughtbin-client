@@ -1,7 +1,5 @@
 @import-normalize;
 
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Open+Sans&display=swap');
-
 @font-face {
   font-family: 'Nexa';
   src: local('Nexa'), url(./fonts/NexaDemo-Bold.woff) format('woff');
